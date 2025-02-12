@@ -1,5 +1,5 @@
-export interface FormData {
-  id: string ;
+export interface FormData extends Record<string, unknown> {
+  id: string;
   title: string;
   botName: string;
   category: string;
@@ -12,9 +12,8 @@ export interface TemplateData extends FormData {
   action: "create" | "edit" | "delete";
 }
 
-// Define the Column type *specifically for FormData* within this component:
 export interface Column {
-  key: keyof FormData | string; // Allow keys of FormData OR a custom string (like "actions")
+  key: keyof FormData | string;
   header: string;
-  render?: (item: FormData) => React.ReactNode; // Optional render function
+  render?: (item: FormData) => React.ReactNode; 
 }

@@ -1,0 +1,30 @@
+trigger:
+  branches:
+    include:
+      - main  # Runs pipeline on pushes to the main branch
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - checkout: self
+    submodules: true
+
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '18.x' # Ensure Node.js version matches your project
+    displayName: 'Install Node.js'
+
+  - script: |
+      npm install
+      npm run build
+    displayName: 'Install dependencies and build Next.js'
+
+  - task: AzureStaticWebApp@0
+    inputs:
+      app_location: '.next'  # Default Next.js build output folder
+      api_location: 'api'   # Adjust if you have API functions
+      output_location: '.next'  # Set to .next if using SSR (may not work for static deployment)
+      azure_static_web_apps_api_token: $(deployment_token)
+    displayName: 'Deploy to Azure Static Web Apps'
+

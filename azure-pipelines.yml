@@ -20,6 +20,10 @@ steps:
       npm run build
     displayName: 'Install dependencies and build Next.js'
 
+  - script: |
+      ls -R .next  # List the contents of the .next folder to verify build output
+    displayName: 'Verify Build Output'
+
   - task: AzureStaticWebApp@0
     inputs:
       app_location: '.next'  # Default Next.js build output folder

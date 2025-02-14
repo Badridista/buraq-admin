@@ -29,6 +29,6 @@ steps:
       app_location: '.next'  # Default Next.js build output folder
       api_location: 'api'   # Adjust if you have API functions
       output_location: '.next'  # Set to .next if using SSR (may not work for static deployment)
-      azure_static_web_apps_api_token: $(deployment_token)
+      azure_static_web_apps_api_token: $(DEPLOYMENT_TOKEN)
     displayName: 'Deploy to Azure Static Web Apps'
 

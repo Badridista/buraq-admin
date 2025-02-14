@@ -28,7 +28,7 @@ steps:
     inputs:
       app_location: '/'
       app_build_command: 'npm run build'
-      output_location: '.next'
+      output_location: './'
       skip_api_build: true
       azure_static_web_apps_api_token: 'bb7cd78877d47283447cc53e96461b4648156c92f1096ff149b3fc0f3ece0daf04-b847b374-836f-402d-ad7a-d8a57e68c27700020020a8df1100'
       deployment_environment: 'Production'
